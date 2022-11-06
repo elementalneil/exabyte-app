@@ -1,0 +1,13 @@
+{% if status == 2 %}
+    <p>Incorrect Username</p>
+{% elif status == 3 %}
+    <p>Incorrect Password</p>
+{% else %}
+{% endif %}
+
+<br>
+<form method = "post">
+    <input type = "text" placeholder = "Username" name = "username" required><br><br>
+    <input type = "password" placeholder = "Password" name = "password" required><br><br>
+    <button type = "submit">Login</button>
+</form>
