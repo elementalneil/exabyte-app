@@ -1,0 +1,116 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/terminal2.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+}
+
+#gap {
+    height: 0px;
+}
+
+#headingholders {
+    padding: 7vh;
+    text-align: left;
+}
+
+#HEADING {
+    font-family: monospace;
+    color: #39ff14;
+    letter-spacing: 2px;
+}
+
+#HEADING1 {
+    font-size: 40px;
+    font-family: monospace;
+    color: #39ff14;
+    letter-spacing: 5px;
+}
+
+#eventsholder {
+    padding: 7vh;
+}
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #333;
+}
+
+.dropbtn {
+    background-color: black;
+    border-radius: 10px;
+    border-bottom: solid #39ff14 3px;
+    color: #39ff14;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: monospace;
+    cursor: pointer;
+    width: 50%;
+    animation-duration: 5s;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #39ff14;
+    color: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 50%;
+}
+
+.dropdown-content a {
+    color: whitesmoke;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.dropdown-content a:hover {
+    border-bottom: solid #39ff14 3px;
+    color: #39ff14;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
+.show {
+    display: block;
+}

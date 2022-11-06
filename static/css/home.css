@@ -1,0 +1,95 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/terminal2.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    font-family: 'Anonymous Pro', 'Lucida Console';
+}
+
+#gap {
+    height: 100px;
+}
+
+#headingholders {
+    padding-left: 7vh;
+    padding-top: 7vh;
+    text-align: left;
+}
+
+#HEADING {
+    color: #39ff14;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.linkholder {
+    text-align: right;
+    width: 100%;
+}
+
+
+/* a:hover {
+    border-bottom: solid #39ff14 3px;
+    color: #39ff14;
+} */
+
+#HEADING1 {
+    font-size: 40px;
+    color: #39ff14;
+    letter-spacing: 3px;
+}
+
+#HEADINGe {
+    color: #39ff14;
+    letter-spacing: 1px;
+    font-size: 30px;
+}
+
+#eventsholder {
+    text-align: left;
+    padding-left: 7vh;
+}
+
+#e1,
+#e2,
+#e3,
+#e4 {
+    padding: 3vh 7vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), black);
+    /* background-image: url("/static/photos/light.gif"); */
+    text-align: left;
+}
+
+#e1d,
+#e2d,
+#e3d,
+#e4d {
+    color: deepskyblue;
+    text-align: justify;
+}
+
+.dropbtn {
+    background-color: black;
+    border-radius: 10px;
+    border-bottom: solid #39ff14 3px;
+    color: #39ff14;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Anonymous Pro', monospace;
+    cursor: pointer;
+    width: 25%;
+    margin-top: 50px;
+}
+
+.dropbtn:hover {
+    background-color: #39ff14;
+    color: black;
+}

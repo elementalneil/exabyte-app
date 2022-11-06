@@ -1,0 +1,67 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/back2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    color: aliceblue;
+    font-family: 'Lucida Console';
+}
+
+#gap {
+    height: 25px;
+}
+
+#formholders {
+    border: none;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), #333 5%, rgba(0, 0, 0, 0.0), #333, rgba(0, 0, 0, 0.0));
+}
+
+table {
+    margin-left: 55vh;
+    color: #39ff14;
+}
+
+td {
+    padding: 2vh;
+    text-align: center;
+}
+
+input[type=text],
+select,
+textarea {
+    margin: 8px 0;
+    border-bottom: 1px solid #39ff14;
+    border-radius: 4px;
+    background-color: black;
+    padding: 10px;
+    color: #39ff14;
+    width: 100%;
+}
+
+select,
+legend {
+    color: #39ff14;
+}
+
+legend {
+    text-align: center;
+    font-family: 'Lucida Console';
+    font-size: 20px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}

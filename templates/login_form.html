@@ -1,13 +1,73 @@
-{% if status == 2 %}
-    <p>Incorrect Username</p>
-{% elif status == 3 %}
-    <p>Incorrect Password</p>
-{% else %}
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
 
-<br>
-<form method = "post">
-    <input type = "text" placeholder = "Username" name = "username" required><br><br>
-    <input type = "password" placeholder = "Password" name = "password" required><br><br>
-    <button type = "submit">Login</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div id="gap">
+
+        </div>
+
+        
+
+        <form method = "post">
+            <fieldset id="formholders">
+                <legend>
+                    <a href="/"><img src="/static/photos/backbutton.jpeg" width="30px" height="30px" /></a>
+                </legend>
+                <div id="gap">
+
+                </div>
+
+                <table>
+                    <tr>
+                        <td colspan = "2">
+                            {% if status == 2 %}
+                                <p>Incorrect Username</p>
+                            {% elif status == 3 %}
+                                <p>Incorrect Password</p>
+                            {% else %}
+                                <p>Enter Your Registered Credentials</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="fname">Admin User ID</label>
+                            <input type="text" name="username" placeholder="Enter username" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="fname">Password</label>
+                            <input type="password" name="password" placeholder="Enter password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit">
+                        </td>
+                        <td>
+                            <input type="reset" value="Reset">
+                        </td>
+                    </tr>
+                </table>
+                <div id="gap">
+
+                </div>
+            </fieldset>
+        </form>
+        <div id="gap">
+
+        </div>
+    </div>
+</body>
+
+</html>

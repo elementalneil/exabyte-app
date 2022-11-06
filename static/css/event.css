@@ -1,0 +1,73 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/back2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    color: aliceblue;
+}
+
+#gap {
+    height: 50px;
+}
+
+#headingholders {
+    text-align: left;
+    padding: 30px 0px 0px 50px;
+}
+
+#HEADING {
+    font-family: monospace;
+    color: #39ff14;
+    letter-spacing: 2px;
+}
+
+#HEADING1 {
+    font-size: 40px;
+    font-family: monospace;
+    color: #39ff14;
+    letter-spacing: 5px;
+}
+
+.dropbtn {
+    background-color: black;
+    color: #39ff14;
+    padding: 16px;
+    font-weight: bold;
+    font-family: monospace;
+    width: 500px;
+}
+
+.dropdown {
+    padding: 30px 0px 0px 50px;
+    text-align: right;
+}
+
+#participents {
+    font-family: monospace;
+    border-collapse: collapse;
+    width: 80%;
+    padding: 30px 0px 0px 50px;
+}
+
+#participents td,
+#participents th {
+    border-right: 1px solid #39ff14;
+    padding: 8px;
+}
+
+#participents tr:hover {
+    background-color: grey;
+    color: black;
+}
+
+#participents th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    border-bottom: 2px solid #39ff14;
+    color: white;
+}

@@ -10,6 +10,8 @@ app = Flask(__name__)
 # The flag before a function sets the route that will trigger the function
 # Whatever is returned by the function will be rendered in the page
 
+# The following secret key is used for verifying sessions
+# Not really sure how it works though
 app.secret_key = b'9HrfUeiAYXp3D^!m'
 
 @app.route('/')
@@ -32,6 +34,9 @@ def users_list():
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login(status = 0):
+    if 'username' in session:
+        return redirect(url_for('index'))
+
     login_obj = login_op.LoginPage()
 
     if request.method == 'POST':
@@ -39,6 +44,7 @@ def login(status = 0):
                                  request.form['password'])
 
     if status == 1:
+        # Creates a new session
         session['username'] = request.form['username']
         return redirect(url_for('index'))
     else:
@@ -47,5 +53,6 @@ def login(status = 0):
 
 @app.route('/logout')
 def logout():
+    # Deletes an existing session
     session.pop('username', None)
     return redirect(url_for('index'))

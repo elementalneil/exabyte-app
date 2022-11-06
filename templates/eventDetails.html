@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/eventDetails.css') }}">
+    <title>Event1</title>
+</head>
+
+<body>
+    {% extends 'header.html' %} {% block content %}
+    <div id="headingholders">
+        <br><br>
+        <H1 id="HEADING1">> Event_name</H1>
+        <H3 id="HEADING">> details</H3>
+        <H3 id="HEADING">> venue</H3>
+    </div>
+    <div id="gap">
+
+    </div>
+    <div>
+        <form>
+            <fieldset id="formholders">
+                <legend>_We need some details about you_ _Please provide the following details_</legend>
+                <div id="gap">
+
+                </div>
+
+                <table>
+                    <tr>
+                        <td>
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        </td>
+                        <td>
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        </td>
+                        <td>
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        </td>
+                        <td>
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="country">participent Type</label>
+                            <select id="country" name="country">
+                                <option value="australia" selected>-----</option>
+                              <option value="australia">Faculty</option>
+                              <option value="canada">Student</option>
+                              <option value="usa">Guest</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Submit">
+                        </td>
+                    </tr>
+                </table>
+                <div id="gap">
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="gap">
+
+    </div>
+    <div id="gap">
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>

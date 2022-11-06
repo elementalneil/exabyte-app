@@ -1,0 +1,66 @@
+input[type=text],
+input[type=password],
+select,
+textarea {
+    margin: 8px 0;
+    border-bottom: 1px solid #39ff14;
+    border-radius: 4px;
+    background-color: black;
+    padding: 10px;
+    color: #39ff14;
+    width: 100%;
+}
+
+select,
+legend {
+    color: #39ff14;
+}
+
+legend {
+    font-family: 'Anonymous Pro', 'Lucida Console';
+    font-size: 20px;
+}
+
+input[type=submit],
+input[type=reset] {
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover {
+    background-color: #45a049;
+}
+
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/terminal2.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    font-family: 'Anonymous Pro', 'Lucida Console';
+}
+
+#formholders {
+    margin-top: 13%;
+    width: 50%;
+    border: none;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), #333);
+}
+
+table {
+    margin-left: 10%;
+    color: #39ff14;
+}
+
+td {
+    padding: 2vh;
+    text-align: center;
+}

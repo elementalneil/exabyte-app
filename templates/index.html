@@ -1,9 +1,97 @@
-<ul>
-    <li><a href = {{ url_for('index') }}>Home</a></li>
-    <li><a href = {{ url_for('users_list') }}>Users</a></li>
-    {% if 'username' not in session %}
-        <li><a href = {{ url_for('login') }}>Admin Login</a></li>
-    {% else %}
-        <li>Logged In as {{ session['username'] }} <a href = {{ url_for('logout') }}>Logout</a></li>
-    {% endif %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>!Exabyte</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}">
+</head>
+
+<body>
+    {% extends 'header.html' %} {% block content %}
+    <div id="headingholders">
+        <br><br>
+        <div id="gap">
+
+        </div>
+        <H1 id="HEADING1">> WELCOME TO Exabyte_</H1>
+        <H3 id="HEADING">> So you think you are a tech geek ?_</H3>
+        <H4 id="HEADING">> Show us your tech skills and win rewards_</H4>
+        <br><br>
+    </div>
+    <div id="gap">
+
+    </div><br><br>
+    <div id="eventsholder">
+        <H3 id="HEADINGe">Check out various events</H3>
+    </div>
+    <div id="e1">
+
+        <H3 id="HEADINGe">event1</H3>
+
+        <p id="e1d">
+            an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business
+            method in which a group of people meet to suggest a lot of new ideas for possible development
+        </p>
+        <div class="linkholder">
+            <a href="/eventDetails">
+                <button class="dropbtn">Enroll Now_</button> </a>
+        </div>
+    </div>
+    <div id="gap">
+
+    </div>
+
+    <div id="e2">
+        <H3 id="HEADINGe">event2</H3>
+        <p id="e2d">
+            an activity or business method in which a group of people meet to suggest a lot of new an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group
+            of people meet to suggest a lot of new ideas for possible developmentideas for possible development
+        </p>
+        <div class="linkholder">
+            <a href="/eventDetails">
+                <button class="dropbtn">Enroll Now_</button> </a>
+        </div>
+    </div>
+    <div id="gap">
+
+    </div>
+    <div id="e3">
+
+        <H3 id="HEADINGe">event3</H3>
+
+        <p id="e2d">
+            an activity or business method in which a group of people meet to suggest a lot of new an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group
+            of people meet to suggest a lot of new ideas for possible developmentideas for possible development
+        </p>
+        <div class="linkholder">
+            <a href="/eventDetails">
+                <button class="dropbtn">Enroll Now_</button> </a>
+        </div>
+    </div>
+    <div id="gap">
+
+    </div>
+    <div id="e4">
+        <H3 id="HEADINGe">event4</H3>
+        <p id="e3d">
+            an activity or business method in which a group of people meet toan activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group of people meet to suggest
+            a lot of new ideas for possible development suggest a lot of new ideas for possible development
+        </p>
+        <div class="linkholder">
+            <a href="/eventDetails">
+                <button class="dropbtn">Enroll Now_</button> </a>
+        </div>
+    </div>
+    <div id="gap">
+
+    </div>
+    <div id="gap">
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>
