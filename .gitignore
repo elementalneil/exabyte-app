@@ -1,3 +1,4 @@
-debayan-templates
 __pycache__
 LoginProject.sqlite
+EventDB.sqlite
+support-docs

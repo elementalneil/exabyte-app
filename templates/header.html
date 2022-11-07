@@ -14,6 +14,7 @@
             padding-left: 20px;
             padding-right: 20px;
             background-color: #333;
+            font-family: 'Anonymous Pro', monospace;
         }
         
         li {
@@ -39,7 +40,7 @@
             left: 0;
             bottom: 0;
             position: fixed;
-            font-family: 'Anonymous Pro', 'Times New Roman';
+            font-family: 'Anonymous Pro', monospace;
         }
     </style>
 </head>
@@ -47,7 +48,7 @@
 <body>
 
     <ul>
-        <li><a class = "active" href = {{ url_for('index') }}>Home</a></li>
+        <li><a href = {{ url_for('index') }}>Home</a></li>
         {% if 'username' not in session %}
             <li style = "float: right;"><a href = {{ url_for('login') }}>Admin Login</a></li>
         {% else %}

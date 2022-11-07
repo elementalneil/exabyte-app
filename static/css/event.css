@@ -20,14 +20,14 @@ body {
 }
 
 #HEADING {
-    font-family: monospace;
+    font-family: 'Anonymous Pro', monospace;
     color: #39ff14;
     letter-spacing: 2px;
 }
 
 #HEADING1 {
     font-size: 40px;
-    font-family: monospace;
+    font-family: 'Anonymous Pro', monospace;
     color: #39ff14;
     letter-spacing: 5px;
 }
@@ -37,7 +37,7 @@ body {
     color: #39ff14;
     padding: 16px;
     font-weight: bold;
-    font-family: monospace;
+    font-family: 'Anonymous Pro', monospace;
     width: 500px;
 }
 
@@ -47,7 +47,7 @@ body {
 }
 
 #participents {
-    font-family: monospace;
+    font-family: 'Anonymous Pro', monospace;
     border-collapse: collapse;
     width: 80%;
     padding: 30px 0px 0px 50px;

@@ -15,41 +15,52 @@
         <div id="gap">
 
         </div>
-        <form>
+        <br>
+        <form  method = "post">
             <fieldset id="formholders">
                 <legend>_Please provide the following details of the new Event_</legend>
                 <div id="gap">
 
                 </div>
-
+                
                 <table>
                     <tr>
                         <td>
                             <label for="fname">Event Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Event Name">
+                            <input type="text" id="fname" name="event_name" placeholder="Event Name" required>
                         </td>
                         <td>
-                            <label for="fname">Event Date</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Event Date">
+                            <label for="fname">Event Venue</label>
+                            <input type="text" id="fname" name="event_venue" placeholder="Event Venue">
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <label for="fname">Description</label>
-                            <textarea rows="4" minlength="200" maxlength="1000" placeholder="Description"></textarea>
+                            <textarea rows="4" name="event_desc" minlength="200" maxlength="1000" placeholder="Description"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="fname">Event Venue</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Event Venue">
+                            <label for="fname">Event Date</label><br><br>
+                            <input type="date" id="fname" name="event_date" required>
                         </td>
                         <td>
-                            <label for="fname">Event Timing</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Event Timing">
+                            <label for="fname">Event Time</label><br><br>
+                            <input type="time" id="fname" name="event_time">
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <label for="fname">Contact Name</label>
+                            <input type="text" id="fname" name="contact_name" placeholder="Contact Name">
+                        </td>
+                        <td>
+                            <label for="fname">Contact Number</label>
+                            <input type="text" id="fname" name="contact_num" placeholder="Contact Number">
+                        </td>
+                    </tr>
+                    <!-- <tr>
                         <td>
                             <label for="country">participent Type</label>
                             <select id="country" name="country">
@@ -59,7 +70,7 @@
                               <option value="usa">Guest</option>
                             </select>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="2">
                             <input type="submit" value="Submit">
