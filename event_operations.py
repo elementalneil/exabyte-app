@@ -14,6 +14,7 @@ class Events:
                 EventID integer NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
                 EventName varchar2(255) NOT NULL,
                 Venue varchar2(63),
+                Description text,
                 Date date NOT NULL,
                 Time time,
                 Contact_name varchar2(255),
@@ -25,10 +26,11 @@ class Events:
 
     def create_event(self, event_args):     # event_args is a dictionary containing event attributes
         query = '''INSERT INTO 
-                   Events(EventName, Venue, Date, Time, Contact_name, Contact_no)
-                   VALUES (?, ?, ?, ?, ?, ?)'''
+                   Events(EventName, Venue, Description, Date, Time, Contact_name, Contact_no)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)'''
         self.__db_cursor.execute(query, (event_args['name'],
                                          event_args['venue'],
+                                         event_args['description'],
                                          event_args['date'],
                                          event_args['time'],
                                          event_args['contact_name'],
@@ -44,15 +46,15 @@ class Events:
 def main():
     event_obj = Events()
 
-    args = {}
-    args['name'] = 'Proshow1'
-    args['venue'] = 'Football Ground'
-    args['date'] = date(2022, 10, 25)
-    args['time'] = '07:30:00'
-    args['contact_name'] = 'John Doe'
-    args['contact_num'] = '+91 815 568 9973'
+    # args = {}
+    # args['name'] = 'Proshow1'
+    # args['venue'] = 'Football Ground'
+    # args['date'] = date(2022, 10, 25)
+    # args['time'] = '07:30:00'
+    # args['contact_name'] = 'John Doe'
+    # args['contact_num'] = '+91 815 568 9973'
 
-    event_obj.create_event(args)
+    # event_obj.create_event(args)
 
     event_obj.view_events()
 

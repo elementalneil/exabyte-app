@@ -11,13 +11,13 @@
 </head>
 
 <body>
-    {% extends 'header.html' %} {% block content %}
+    {% extends 'header.html.jinja' %} {% block content %}
     <div id="headingholders">
         <br><br>
         <div id="gap">
 
         </div>
-        <H1 id="HEADING1">> WELCOME ADMIN_</H1>
+        <H1 id="HEADING1">> WELCOME {{ session['username'] }}_ </H1>
         <H3 id="HEADING">> What do you have in mind today?_</H3>
     </div>
     <div id="gap">
@@ -25,7 +25,7 @@
     </div>
     <div id="eventsholder">
         <div class="dropdown">
-            <a href="/addEvent">
+            <a href="{{ url_for('create_event') }}">
                 <button class="dropbtn">Add New Event_</button> </a>
             <br><br>
             <button onclick="myFunction()" class="dropbtn">Check Event List_</button>

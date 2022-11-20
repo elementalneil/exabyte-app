@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {% extends 'header.html' %} {% block content %}
+    {% extends 'header.html.jinja' %} {% block content %}
     <div>
         <div id="gap">
 
@@ -37,7 +37,7 @@
                     <tr>
                         <td colspan="2">
                             <label for="fname">Description</label>
-                            <textarea rows="4" name="event_desc" minlength="200" maxlength="1000" placeholder="Description"></textarea>
+                            <textarea rows="4" name="event_desc" minlength="0" maxlength="1000" placeholder="Description"></textarea>
                         </td>
                     </tr>
                     <tr>

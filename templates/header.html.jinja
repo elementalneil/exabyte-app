@@ -25,7 +25,8 @@
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 16px 16px;
+            margin: auto 1vw;
             text-decoration: none;
         }
         
@@ -52,6 +53,7 @@
         {% if 'username' not in session %}
             <li style = "float: right;"><a href = {{ url_for('login') }}>Admin Login</a></li>
         {% else %}
+            <li><a href = {{ url_for('admin_dash') }}>Admin Dashboard</a></li>
             <li style = "float: right;"><p style="padding-left: 1vw; color: white">{{ session['username'] }}</p></li>
             <li style = "float: right;"><a href = {{ url_for('logout') }}>Logout</a></li>
         {% endif %}

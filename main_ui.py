@@ -18,7 +18,7 @@ app.secret_key = b'9HrfUeiAYXp3D^!m'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html.jinja')
 
 @app.route('/users')
 def users_list():
@@ -50,7 +50,7 @@ def login(status = 0):
         session['username'] = request.form['username']
         return redirect(url_for('index'))
     else:
-        return render_template('login_form.html', status = status)
+        return render_template('login_form.html.jinja', status = status)
 
 
 @app.route('/logout')
@@ -70,15 +70,34 @@ def create_event():
     args = {}
     if request.method == 'POST':
         args['name'] = request.form['event_name']
-        args['venue'] = request.form['event_venue']
+
+        if request.form['event_venue'] != '':
+            args['venue'] = request.form['event_venue']
+        else:
+            args['venue'] = None
+
+        if request.form['event_desc'] != '':
+            args['description'] = request.form['event_desc']
+        else:
+            args['description'] = None
 
         date_ = request.form['event_date']
         time_ = request.form['event_time']
         args['date'] = date(int(date_[0:4]), int(date_[5:7]), int(date_[8:10]))
-        args['time'] = time_ + ':00'
+        if time_ != '':
+            args['time'] = time_ + ':00'
+        else:
+            args['time'] = None
     
-        args['contact_name'] = request.form['contact_name']
-        args['contact_num'] = request.form['contact_num']
+        if request.form['contact_name'] != '':
+            args['contact_name'] = request.form['contact_name']
+        else:
+            args['contact_name'] = None
+
+        if request.form['contact_num'] != '':
+            args['contact_num'] = request.form['contact_num']
+        else:
+            args['contact_num'] = None
 
         event_obj.create_event(args)
 
@@ -91,9 +110,17 @@ def create_event():
     # args['contact_name'] = 'John Doe'
     # args['contact_num'] = '+91 815 568 9973'
 
-    return render_template('addEvent.html')
+    return render_template('addEvent.html.jinja')
+
+
+@app.route('/dashboard')
+def admin_dash():
+    test = "test"
+    return render_template('Dashboard.html.jinja')
 
 
 @app.route('/event')
 def event():
-    return render_template('event.html')
+    context = {}
+
+    return render_template('event.html.jinja')
