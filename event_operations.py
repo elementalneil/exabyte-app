@@ -40,7 +40,8 @@ class Events:
     def view_events(self):
         query = 'SELECT * FROM Events'
         self.__db_cursor.execute(query)
-        print(self.__db_cursor.fetchall())
+        all_events = self.__db_cursor.fetchall()
+        return all_events
         
 
 def main():

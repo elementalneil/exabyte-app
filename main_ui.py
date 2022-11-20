@@ -101,22 +101,22 @@ def create_event():
 
         event_obj.create_event(args)
 
-    # args = {}
-    # # if request.method == 'POST':
-    # args['name'] = 'Proshow2'
-    # args['venue'] = 'Football Ground'
-    # args['date'] = date(2022, 10, 25)
-    # args['time'] = '07:30:00'
-    # args['contact_name'] = 'John Doe'
-    # args['contact_num'] = '+91 815 568 9973'
-
     return render_template('addEvent.html.jinja')
 
 
 @app.route('/dashboard')
 def admin_dash():
-    test = "test"
     return render_template('Dashboard.html.jinja')
+
+
+@app.route('/event_list')
+def event_list():
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    event_obj = Events()
+    all_events = event_obj.view_events()
+    return render_template('event_list.html.jinja', all_events = all_events)
 
 
 @app.route('/event')

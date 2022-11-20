@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/event.css') }}">
+    <title>Event1</title>
+</head>
+
+<body>
+    {% extends 'header.html.jinja' %} {% block content %}
+    <div id="headingholders">
+        <br><br>
+        <H1 id="HEADING1">> Event List</H1>
+    </div>
+
+    <div id="participents">
+        <table id="participents">
+            <tr>
+                <th>Name</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>POC Name</th>
+                <th>POC Contact</th>
+            </tr>
+            {% for event in all_events %}
+            <tr>
+                <td>{{event[1]}}</td>
+                <td>{{event[2]}}</td>
+                <td>{{event[4]}}</td>
+                <td>{{event[5]}}</td>
+                <td>{{event[6]}}</td>
+                <td>{{event[7]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <div id="gap">
+
+    </div>
+    <div id="gap">
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>
