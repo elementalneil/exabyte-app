@@ -1,6 +1,7 @@
 __pycache__
 LoginProject.sqlite
 EventDB.sqlite
+main_server.sqlite
 support-docs
 Agenda.txt
 doc

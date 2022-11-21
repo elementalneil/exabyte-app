@@ -13,9 +13,9 @@
     {% extends 'header.html.jinja' %} {% block content %}
     <div id="headingholders">
         <br><br>
-        <H1 id="HEADING1">> Event_name</H1>
-        <H3 id="HEADING">> details</H3>
-        <H3 id="HEADING">> venue</H3>
+        <H1 id="HEADING1">> {{ event_row[1] }}</H1>
+        <H3 id="HEADING">> {{ event_row[3][:100] }}</H3>
+        <H3 id="HEADING">> {{ event_row[2] }}</H3>
     </div>
     <div class="dropdown">
         <p class="dropbtn">filter participents:

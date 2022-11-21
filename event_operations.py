@@ -6,7 +6,7 @@ class Events:
     __db_cursor = None
 
     def __init__(self):
-        self.__db_connection = sqlite3.connect("EventDB.sqlite")
+        self.__db_connection = sqlite3.connect("main_server.sqlite")
         self.__db_cursor = self.__db_connection.cursor()
 
         initscript = '''
@@ -42,6 +42,10 @@ class Events:
         self.__db_cursor.execute(query)
         all_events = self.__db_cursor.fetchall()
         return all_events
+
+    def event_details(self, event_id):
+        self.__db_cursor.execute('SELECT * FROM Events WHERE EventID = ?', (event_id, ))
+        return self.__db_cursor.fetchone()
         
 
 def main():
@@ -57,7 +61,7 @@ def main():
 
     # event_obj.create_event(args)
 
-    event_obj.view_events()
+    event_obj.event_details(2)
 
 if __name__ == '__main__':
     main()

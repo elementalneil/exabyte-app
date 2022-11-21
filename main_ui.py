@@ -119,8 +119,12 @@ def event_list():
     return render_template('event_list.html.jinja', all_events = all_events)
 
 
-@app.route('/event')
-def event():
-    context = {}
+@app.route('/event/<int:event_id>')
+def event(event_id = 1):
+    event_obj = Events()
+    context = event_obj.event_details(event_id)
 
-    return render_template('event.html.jinja')
+    if context == None:
+        return redirect(url_for('event_list'))
+
+    return render_template('event.html.jinja', event_row = context)

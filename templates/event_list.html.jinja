@@ -27,7 +27,7 @@
                 <th>POC Contact</th>
             </tr>
             {% for event in all_events %}
-            <tr>
+            <tr onclick="window.location='{{ url_for('event', event_id = event[0]) }}'">
                 <td>{{event[1]}}</td>
                 <td>{{event[2]}}</td>
                 <td>{{event[4]}}</td>
