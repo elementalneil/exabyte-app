@@ -71,8 +71,8 @@ class Student(Participant):
             return False
 
         elif flag == 0:
-            query = 'INSERT INTO Participant_Type (Ptype) VALUES (?)'
-            self._db_cursor.execute(query, (1, ))
+            query = 'INSERT INTO Participant_Type (Ptype) VALUES (1)'
+            self._db_cursor.execute(query)
             self._db_cursor.execute('SELECT MAX(PID) FROM Participant_Type')
             pid = self._db_cursor.fetchone()[0]
 
@@ -86,7 +86,7 @@ class Student(Participant):
             '''
             self._db_cursor.execute(query, (student_args['roll_no'],
                                             student_args['name'],
-                                            student_args['contact_no'],
+                                            student_args['contact_num'],
                                             student_args['email'],
                                             student_args['dept'],
                                             student_args['sem']))
@@ -95,10 +95,10 @@ class Student(Participant):
             return True
 
         else:
-            self._db_cursor.execute('SELECT PID FROM ID_Student WHERE Roll_no = ?', (student_args['roll_no']))
+            self._db_cursor.execute('SELECT PID FROM ID_Student WHERE Roll_no = ?', (student_args['roll_no'], ))
             pid = self._db_cursor.fetchone()[0]
 
-            self._db_cursor.execute('INSERT INTO Participants (PID, Event_ID) VALUES (?, ?)', pid, event_id)
+            self._db_cursor.execute('INSERT INTO Participants (PID, EventID) VALUES (?, ?)', (pid, event_id, ))
 
             self._db_connection.commit()
             return True
@@ -171,10 +171,10 @@ class Faculty(Participant):
             return True
 
         else:
-            self._db_cursor.execute('SELECT PID FROM ID_Student WHERE Roll_no = ?', (faculty_args['fid']))
+            self._db_cursor.execute('SELECT PID FROM ID_Faculty WHERE F_ID = ?', (faculty_args['fid'], ))
             pid = self._db_cursor.fetchone()[0]
 
-            self._db_cursor.execute('INSERT INTO Participants (PID, Event_ID) VALUES (?, ?)', pid, event_id)
+            self._db_cursor.execute('INSERT INTO Participants (PID, EventID) VALUES (?, ?)', (pid, event_id))
 
             self._db_connection.commit()
             return True
@@ -201,17 +201,73 @@ class Outsider(Participant):
 
         self._db_cursor.executescript(initscript)
 
+    def register_outsider(self, outsider_args, event_id):
+        govt_id = outsider_args['govt_id'].upper()
+
+        flag = 1
+        # 0 represents no outsider exists with given data. 
+        # 1 represents outsider exists, but is not currently participating in given event.
+        # 2 represents outsider exists and is already registered in given event.
+        
+        self._db_cursor.execute('SELECT PID FROM ID_Outsider WHERE Govt_ID = ?', (govt_id, ))
+
+        pid = self._db_cursor.fetchone()
+        if(pid == None):
+            flag = 0
+        else:
+            self._db_cursor.execute('SELECT EventID FROM Participants WHERE PID = ?', (pid[0], ))
+            for row in self._db_cursor.fetchall():
+                if row[0] == event_id:
+                    flag = 2
+                    break
+
+        if flag == 2:
+            return False
+
+        elif flag == 0:
+            query = 'INSERT INTO Participant_Type (Ptype) VALUES (3)'
+            self._db_cursor.execute(query)
+            self._db_cursor.execute('SELECT MAX(PID) FROM Participant_Type')
+            pid = self._db_cursor.fetchone()[0]
+
+            self._db_cursor.execute('INSERT INTO Participants (PID, EventID) VALUES (?, ?)', (pid, event_id, ))
+
+            self._db_cursor.execute('INSERT INTO ID_Outsider (PID, Govt_ID) VALUES (?, ?)', (pid, outsider_args['govt_id'], ))
+            
+            query = '''
+                INSERT INTO Outsider (Govt_ID, Name, College, Contact_num, State)
+                VALUES (?, ?, ?, ?, ?)
+            '''
+            self._db_cursor.execute(query, (outsider_args['govt_id'],
+                                            outsider_args['name'],
+                                            outsider_args['college'],
+                                            outsider_args['contact_num'],
+                                            outsider_args['state']))
+            
+            self._db_connection.commit()
+            return True
+
+        else:
+            self._db_cursor.execute('SELECT PID FROM ID_Outsider WHERE Govt_ID = ?', (outsider_args['govt_id'], ))
+            pid = self._db_cursor.fetchone()[0]
+
+            self._db_cursor.execute('INSERT INTO Participants (PID, EventID) VALUES (?, ?)', (pid, event_id))
+
+            self._db_connection.commit()
+            return True
+
 
 def main():
-    std = Faculty()
+    std = Outsider()
 
     args = {}
-    args['fid'] = '5633CS'
-    args['name'] = 'Dr. Jayaraj PB'
-    args['contact_no'] = '38349 12321'
-    args['dept'] = "CSED"
+    args['govt_id'] = '8978 5645 6654'
+    args['name'] = 'Sourayan Das'
+    args['college'] = 'Jadavpur University'
+    args['contact_num'] = '+91 8695 654 235'
+    args['state'] = 'West Bengal'
 
-    flag = std.register_faculty(args, 1)
+    flag = std.register_outsider(args, 1)
     if flag:
         print('Registered Successfully')
     else:
