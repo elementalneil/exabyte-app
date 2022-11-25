@@ -6,13 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/event.css') }}">
-    <title>Event1</title>
+    <title>Admin Event List</title>
 </head>
 
 <body>
     {% extends 'header.html.jinja' %} {% block content %}
     <div id="headingholders">
         <br><br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 id = "HEADING">> {{ message }}</h3>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <H1 id="HEADING1">> Event List</H1>
     </div>
 
@@ -31,7 +39,11 @@
                 <td>{{event[1]}}</td>
                 <td>{{event[2]}}</td>
                 <td>{{event[4]}}</td>
-                <td>{{event[5]}}</td>
+                {% if event[5] == None %}
+                    <td> </td>
+                {% else %}
+                    <td>{{event[5]}}</td>
+                {% endif %}
                 <td>{{event[6]}}</td>
                 <td>{{event[7]}}</td>
             </tr>

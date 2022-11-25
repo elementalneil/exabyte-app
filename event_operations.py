@@ -37,6 +37,25 @@ class Events:
                                          event_args['contact_num']) )
         self.__db_connection.commit()
 
+    def modify_event(self, new_args, event_id):
+        query = '''
+            UPDATE Events
+            SET EventName = ?, Venue = ?, Description = ?, Date = ?, Time = ?, Contact_name = ?, Contact_no = ?
+            WHERE EventID = ?
+        '''
+        self.__db_cursor.execute(query, (new_args['name'],
+                                         new_args['venue'],
+                                         new_args['description'],
+                                         new_args['date'],
+                                         new_args['time'],
+                                         new_args['contact_name'],
+                                         new_args['contact_num'],
+                                         event_id) )
+        self.__db_connection.commit()
+
+    def delete_event(self, event_id):
+        self.__db_cursor.execute('DELETE FROM Events WHERE EventID = ?', (event_id))
+
     def view_events(self):
         query = 'SELECT * FROM Events'
         self.__db_cursor.execute(query)

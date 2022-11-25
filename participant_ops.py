@@ -62,10 +62,12 @@ class Student(Participant):
             flag = 0
         else:
             self._db_cursor.execute('SELECT EventID FROM Participants WHERE PID = ?', (pid[0], ))
-            for row in self._db_cursor.fetchall():
-                if row[0] == event_id:
-                    flag = 2
-                    break
+            rows = self._db_cursor.fetchall()
+            if rows != None:
+                for row in rows:
+                    if row[0] == event_id:
+                        flag = 2
+                        break
 
         if flag == 2:
             return False
@@ -140,10 +142,12 @@ class Faculty(Participant):
             flag = 0
         else:
             self._db_cursor.execute('SELECT EventID FROM Participants WHERE PID = ?', (pid[0], ))
-            for row in self._db_cursor.fetchall():
-                if row[0] == event_id:
-                    flag = 2
-                    break
+            rows = self._db_cursor.fetchall()
+            if rows != None:
+                for row in rows:
+                    if row[0] == event_id:
+                        flag = 2
+                        break
 
         if flag == 2:
             return False
@@ -216,10 +220,12 @@ class Outsider(Participant):
             flag = 0
         else:
             self._db_cursor.execute('SELECT EventID FROM Participants WHERE PID = ?', (pid[0], ))
-            for row in self._db_cursor.fetchall():
-                if row[0] == event_id:
-                    flag = 2
-                    break
+            rows = self._db_cursor.fetchall()
+            if rows != None:
+                for row in rows:
+                    if row[0] == event_id:
+                        flag = 2
+                        break
 
         if flag == 2:
             return False

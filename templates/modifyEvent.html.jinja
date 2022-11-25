@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/addEvent.css') }}">
+    <title>Modify Event</title>
+</head>
+
+<body>
+    {% extends 'header.html.jinja' %} {% block content %}
+    <div>
+        <div id="gap">
+
+        </div>
+        <br>
+        <form  method = "post">
+            <fieldset id="formholders">
+                <legend>_Modify the required details and click Update_</legend>
+                <div id="gap">
+
+                </div>
+                
+                <table>
+                    <tr>
+                        <td>
+                            <label for="fname">Event Name</label>
+                            <input type="text" id="fname" name="event_name" value = "{{ data['name'] }}" placeholder="Event Name" required>
+                        </td>
+                        <td>
+                            <label for="fname">Event Venue</label>
+                            <input type="text" id="fname" name="event_venue" value = "{{ data['venue'] }}" placeholder="Event Venue">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="fname">Description</label>
+                            <textarea rows="4" name="event_desc" minlength="0" maxlength="1000" placeholder="Description">{{ data['desc'] }}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fname">Event Date</label><br><br>
+                            <input type="date" value = "{{data['date']}}" id="fname" name="event_date" required>
+                        </td>
+                        <td>
+                            <label for="fname">Event Time</label><br><br>
+                            <input type="time" value = "{{data['time']}}" id="fname" name="event_time">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="fname">Contact Name</label>
+                            <input type="text" id="fname" value = "{{ data['contact_name'] }}" name="contact_name" placeholder="Contact Name">
+                        </td>
+                        <td>
+                            <label for="fname">Contact Number</label>
+                            <input type="text" id="fname" value = "{{ data['contact_num'] }}" name="contact_num" placeholder="Contact Number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Update">
+                        </td>
+                    </tr>
+                </table>
+                <div id="gap">
+
+                </div>
+            </fieldset>
+        </form>
+        <div id="gap">
+
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
