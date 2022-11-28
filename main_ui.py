@@ -216,13 +216,10 @@ def register(ptype = 'student', event_id = 1):
 
             participant_obj.register_faculty(faculty_args = args, event_id = event_id)
 
-
     elif ptype == 'outsider':
         participant_obj = Outsider()
         args = {}
         if request.method == 'POST':
-            print('Test')
-            print(request.form['name'])
             args['govt_id'] = request.form['govt_id']
             args['name'] = request.form['name']
 
@@ -242,8 +239,35 @@ def register(ptype = 'student', event_id = 1):
                 args['state'] = None
 
             participant_obj.register_outsider(outsider_args = args, event_id = event_id)
+
     else:
         ptype = 'student'
         participant_obj = Student()
+        args = {}
+        if request.method == 'POST':
+            args['roll_no'] = request.form['roll']
+            args['name'] = request.form['name']
+
+            if request.form['contact_num'] != '':
+                args['contact_num'] = request.form['contact_num']
+            else:
+                args['contact_num'] = None
+
+            if request.form['email'] != '':
+                args['email'] = request.form['email']
+            else:
+                args['email'] = None
+
+            if request.form['dept'] != '':
+                args['dept'] = request.form['dept']
+            else:
+                args['dept'] = None
+
+            if request.form['sem'] != '':
+                args['sem'] = request.form['sem']
+            else:
+                args['sem'] = None
+
+            participant_obj.register_student(student_args = args, event_id = event_id)
 
     return render_template('register.html.jinja', ptype = ptype, event_id = event_id, event_name = event_name)

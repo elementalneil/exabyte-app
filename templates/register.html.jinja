@@ -120,7 +120,43 @@
                         </tr>
                     </table>
                 {% else %}
-                    Student Form
+                    <table class = "student_table">
+                        <tr>
+                            <td>
+                                <label for="fname">Name</label>
+                                <input type="text" id="fname" name="name" placeholder="Your Name" required>
+                            </td>
+                            <td>
+                                <label for="fname">Roll Number</label>
+                                <input type="text" id="fname" name="roll" placeholder="Roll Number" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Contact Number</label>
+                                <input type="text" id="fname" name="contact_num" placeholder="Contact Number">
+                            </td>
+                            <td>
+                                <label for="fname">Email</label>
+                                <input type="text" id="fname" name="email" placeholder="Enter Email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Department</label>
+                                <input type="text" id="fname" name="dept" placeholder="Department">
+                            </td>
+                            <td>
+                                <label for="fname">Semester</label>
+                                <input type="text" id="fname" name="sem" placeholder="Enter Semester">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
                 {% endif %}
 
                 
