@@ -219,6 +219,29 @@ def register(ptype = 'student', event_id = 1):
 
     elif ptype == 'outsider':
         participant_obj = Outsider()
+        args = {}
+        if request.method == 'POST':
+            print('Test')
+            print(request.form['name'])
+            args['govt_id'] = request.form['govt_id']
+            args['name'] = request.form['name']
+
+            if request.form['contact_num'] != '':
+                args['contact_num'] = request.form['contact_num']
+            else:
+                args['contact_num'] = None
+
+            if request.form['college'] != '':
+                args['college'] = request.form['college']
+            else:
+                args['college'] = None
+
+            if request.form['state'] != '':
+                args['state'] = request.form['state']
+            else:
+                args['state'] = None
+
+            participant_obj.register_outsider(outsider_args = args, event_id = event_id)
     else:
         ptype = 'student'
         participant_obj = Student()

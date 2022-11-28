@@ -206,7 +206,7 @@ class Outsider(Participant):
         self._db_cursor.executescript(initscript)
 
     def register_outsider(self, outsider_args, event_id):
-        govt_id = outsider_args['govt_id'].upper()
+        govt_id = outsider_args['govt_id'].upper().replace(" ", "")
 
         flag = 1
         # 0 represents no outsider exists with given data. 

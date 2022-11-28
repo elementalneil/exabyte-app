@@ -54,7 +54,7 @@
                         <tr>
                             <td>
                                 <label for="fname">Name</label>
-                                <input type="text" id="fname" name="name" placeholder="Event Name" required>
+                                <input type="text" id="fname" name="name" placeholder="Your Name" required>
                             </td>
                         </tr>
                         <tr>
@@ -81,8 +81,44 @@
                             </td>
                         </tr>
                     </table>
-                {% elif type == 'outsider' %}
-                    Outsider Form
+                {% elif ptype == 'outsider' %}
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="fname">Name</label>
+                                <input type="text" id="fname" name="name" placeholder="Your Name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Aadhar Number</label>
+                                <input type="text" id="fname" name="govt_id" placeholder="XXXX XXXX XXXX" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">College Name</label>
+                                <input type="text" id="fname" name="college" placeholder="Your College">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Contact Number</label>
+                                <input type="text" id="fname" name="contact_num" placeholder="Contact Number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Home State</label>
+                                <input type="text" id="fname" name="state" placeholder="Your Home State">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
                 {% else %}
                     Student Form
                 {% endif %}
