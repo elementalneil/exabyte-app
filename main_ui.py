@@ -201,11 +201,23 @@ def event(event_id = 1):
     event_obj = Events()
     context = event_obj.event_details(event_id)
 
+    event_obj = Events()
+    students = event_obj.event_students(event_id)
+
+    event_obj = Events()
+    faculties = event_obj.event_faculty(event_id)
+
+    event_obj = Events()
+    outsiders = event_obj.event_outsider(event_id)
+
     if context == None:
         flash('Event Not Found')
         return redirect(url_for('event_list'))
 
-    return render_template('event.html.jinja', event_row = context)
+    return render_template('event.html.jinja', event_row = context, 
+                                               students = students,
+                                               faculties = faculties,
+                                               outsiders = outsiders)
 
 
 @app.route('/register/<string:ptype>/<int:event_id>', methods = ['POST', 'GET'])

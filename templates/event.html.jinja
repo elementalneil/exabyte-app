@@ -17,73 +17,64 @@
         <H3 id="HEADING">> {{ event_row[3][:100] }}</H3>
         <H3 id="HEADING">> {{ event_row[2] }}</H3>
     </div>
-    <div class="dropdown">
-        <p class="dropbtn">filter participents:
-            <select name="ptypes" id="ptypes">
-            <option value="default" selected>-----</option>
-            <option value="faculty">faculty</option>
-            <option value="Student">Student</option>
-            <option value="guest">guest</option>
-          </select></p>
-    </div>
 
+    <br>
+    <br>
     <div id="participents">
+        <H3 id="HEADING">> Registered Students</H3>
         <table id="participents">
             <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
+                <th>PID</th>
+                <th>Roll Number</th>
+                <th>Name</th>
+                <th>Email</th>
             </tr>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student[0] }}</td>
+                    <td>{{ student[1] }}</td>
+                    <td>{{ student[2] }}</td>
+                    <td>{{ student[3] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br><br><br>
+
+        <H3 id="HEADING">> Registered Faculties</H3>
+        <table id="participents">
             <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
+                <th>PID</th>
+                <th>Faculty ID</th>
+                <th>Name</th>
+                <th>Contact Number</th>
             </tr>
+            {% for faculty in faculties %}
+                <tr>
+                    <td>{{faculty[0]}}</td>
+                    <td>{{faculty[1]}}</td>
+                    <td>{{faculty[2]}}</td>
+                    <td>{{faculty[3]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br><br><br>
+
+        <H3 id="HEADING">> External Students</H3>
+        <table id="participents">
             <tr>
-                <td>Berglunds snabbköp</td>
-                <td>Christina Berglund</td>
-                <td>Sweden</td>
+                <th>PID</th>
+                <th>Aadhar Number</th>
+                <th>Name</th>
+                <th>College</th>
             </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-            </tr>
-            <tr>
-                <td>Ernst Handel</td>
-                <td>Roland Mendel</td>
-                <td>Austria</td>
-            </tr>
-            <tr>
-                <td>Island Trading</td>
-                <td>Helen Bennett</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Königlich Essen</td>
-                <td>Philip Cramer</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Laughing Bacchus Winecellars</td>
-                <td>Yoshi Tannamuri</td>
-                <td>Canada</td>
-            </tr>
-            <tr>
-                <td>Magazzini Alimentari Riuniti</td>
-                <td>Giovanni Rovelli</td>
-                <td>Italy</td>
-            </tr>
-            <tr>
-                <td>North/South</td>
-                <td>Simon Crowther</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Paris spécialités</td>
-                <td>Marie Bertrand</td>
-                <td>France</td>
-            </tr>
+            {% for outsider in outsiders %}
+                <tr>
+                    <td>{{outsider[0]}}</td>
+                    <td>{{outsider[1]}}</td>
+                    <td>{{outsider[2]}}</td>
+                    <td>{{outsider[3]}}</td>
+                </tr>
+            {% endfor %}
         </table>
 
     </div>
