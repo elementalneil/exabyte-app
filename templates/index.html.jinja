@@ -27,69 +27,22 @@
     <div id="eventsholder">
         <H3 id="HEADINGe">Check out various events</H3>
     </div>
-    <div id="e1">
 
-        <H3 id="HEADINGe">event1</H3>
 
-        <p id="e1d">
-            an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business
-            method in which a group of people meet to suggest a lot of new ideas for possible development
-        </p>
-        <div class="linkholder">
-            <a href="/eventDetails">
-                <button class="dropbtn">Enroll Now_</button> </a>
+    {% for event in events[0:4] %}
+        <div id = "e">
+            <H3 id="HEADINGe">{{event[1]}}</H3>
+
+            <p id="ed">{{event[3]}}</p>
+            <p id="ed">Venue: {{event[2]}}</p>
+            <div class="linkholder">
+                <a href="{{ url_for('register', ptype = 1, event_id = event[0]) }}">
+                    <button class="dropbtn">Enroll Now_</button> </a>
+            </div>
         </div>
-    </div>
+        <br><br>
+    {% endfor %}
     <div id="gap">
-
-    </div>
-
-    <div id="e2">
-        <H3 id="HEADINGe">event2</H3>
-        <p id="e2d">
-            an activity or business method in which a group of people meet to suggest a lot of new an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group
-            of people meet to suggest a lot of new ideas for possible developmentideas for possible development
-        </p>
-        <div class="linkholder">
-            <a href="/eventDetails">
-                <button class="dropbtn">Enroll Now_</button> </a>
-        </div>
-    </div>
-    <div id="gap">
-
-    </div>
-    <div id="e3">
-
-        <H3 id="HEADINGe">event3</H3>
-
-        <p id="e2d">
-            an activity or business method in which a group of people meet to suggest a lot of new an activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group
-            of people meet to suggest a lot of new ideas for possible developmentideas for possible development
-        </p>
-        <div class="linkholder">
-            <a href="/eventDetails">
-                <button class="dropbtn">Enroll Now_</button> </a>
-        </div>
-    </div>
-    <div id="gap">
-
-    </div>
-    <div id="e4">
-        <H3 id="HEADINGe">event4</H3>
-        <p id="e3d">
-            an activity or business method in which a group of people meet toan activity or business method in which a group of people meet to suggest a lot of new ideas for possible developmentan activity or business method in which a group of people meet to suggest
-            a lot of new ideas for possible development suggest a lot of new ideas for possible development
-        </p>
-        <div class="linkholder">
-            <a href="/eventDetails">
-                <button class="dropbtn">Enroll Now_</button> </a>
-        </div>
-    </div>
-    <div id="gap">
-
-    </div>
-    <div id="gap">
-
     </div>
     {% endblock %}
 </body>

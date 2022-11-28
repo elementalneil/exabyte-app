@@ -19,7 +19,17 @@ app.secret_key = b'9HrfUeiAYXp3D^!m'
 
 @app.route('/')
 def index():
-    return render_template('index.html.jinja')
+    event = Events()
+    event_list = event.view_events()
+    return render_template('index.html.jinja', events = event_list)
+
+
+@app.route('/events')
+def event_list_user():
+    event = Events()
+    event_list = event.view_events()
+    return render_template('event_list_user.html.jinja', events = event_list)
+
 
 @app.route('/users')
 def users_list():
@@ -34,6 +44,7 @@ def users_list():
     render = render + '</ul>'
 
     return render
+    
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login(status = 0):
@@ -166,6 +177,9 @@ def modify_event(event_id = 1):
 
 @app.route('/dashboard')
 def admin_dash():
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
     return render_template('Dashboard.html.jinja')
 
 
@@ -181,6 +195,9 @@ def event_list():
 
 @app.route('/event/<int:event_id>')
 def event(event_id = 1):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
     event_obj = Events()
     context = event_obj.event_details(event_id)
 

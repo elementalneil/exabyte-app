@@ -57,20 +57,14 @@ a {
     padding-left: 7vh;
 }
 
-#e1,
-#e2,
-#e3,
-#e4 {
+#e {
     padding: 3vh 7vh;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), black);
     /* background-image: url("/static/photos/light.gif"); */
     text-align: left;
 }
 
-#e1d,
-#e2d,
-#e3d,
-#e4d {
+#ed {
     color: deepskyblue;
     text-align: justify;
 }
