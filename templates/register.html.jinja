@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
+    <title>Add Event</title>
+</head>
+
+<body>
+    {% extends 'header.html.jinja' %} {% block content %}
+    <div>
+        <div id="gap">
+
+        </div>
+        <br>
+        <form  method = "post">
+            <fieldset id="formholders">
+                <legend>_Register for {{event_name}}_</legend>
+                <div id="gap">
+
+                </div>
+
+                <div class = "slider">
+                    <a href = "{{ url_for('register', ptype = 'student', event_id = event_id) }}">
+                        {% if ptype != 'faculty' and ptype != 'outsider' %}
+                            <p class = "active">NITC Student</p>
+                        {% else %}
+                            <p class = "inactive">NITC Student</p>
+                        {% endif %}
+                    </a>
+
+                    <a href = "{{ url_for('register', ptype = 'faculty', event_id = event_id) }}">
+                        {% if ptype == 'faculty' %}
+                            <p class = "active">Faculty</p>
+                        {% else %}
+                            <p class = "inactive">Faculty</p>
+                        {% endif %}
+                    </a>
+                    
+                    <a href = "{{ url_for('register', ptype = 'outsider', event_id = event_id) }}">
+                        {% if ptype == 'outsider' %}
+                            <p class = "active">External Student</p>
+                        {% else %}
+                            <p class = "inactive">External Student</p>
+                        {% endif %}
+                    </a>
+                </div>
+
+                {% if ptype == 'faculty' %}
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="fname">Name</label>
+                                <input type="text" id="fname" name="name" placeholder="Event Name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Faculty ID</label>
+                                <input type="text" id="fname" name="fid" placeholder="Faculty ID" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Contact Number</label>
+                                <input type="text" id="fname" name="contact_num" placeholder="Contact Number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="fname">Department</label>
+                                <input type="text" id="fname" name="dept" placeholder="Department">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
+                {% elif type == 'outsider' %}
+                    Outsider Form
+                {% else %}
+                    Student Form
+                {% endif %}
+
+                
+                <div id="gap">
+
+                </div>
+            </fieldset>
+        </form>
+        <div id="gap">
+
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

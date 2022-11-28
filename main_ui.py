@@ -191,8 +191,36 @@ def event(event_id = 1):
     return render_template('event.html.jinja', event_row = context)
 
 
-@app.route('/register/<string:ptype>')
-def register(ptype = 'student'):
-    student_obj = Student()
-    faculty_obj = Faculty()
-    outsider_obj = Outsider()
+@app.route('/register/<string:ptype>/<int:event_id>', methods = ['POST', 'GET'])
+def register(ptype = 'student', event_id = 1):
+    event = Events()
+    event_name = event.event_details(event_id)[1]
+
+    participant_obj = None
+    if ptype == 'faculty':
+        participant_obj = Faculty()
+        args = {}
+        if request.method == 'POST':
+            args['fid'] = request.form['fid']
+            args['name'] = request.form['name']
+
+            if request.form['contact_num'] != '':
+                args['contact_no'] = request.form['contact_num']
+            else:
+                args['contact_no'] = None
+
+            if request.form['dept'] != '':
+                args['dept'] = request.form['dept']
+            else:
+                args['dept'] = None
+
+            participant_obj.register_faculty(faculty_args = args, event_id = event_id)
+
+
+    elif ptype == 'outsider':
+        participant_obj = Outsider()
+    else:
+        ptype = 'student'
+        participant_obj = Student()
+
+    return render_template('register.html.jinja', ptype = ptype, event_id = event_id, event_name = event_name)

@@ -1,0 +1,132 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/back2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    color: aliceblue;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+#gap {
+    height: 25px;
+}
+
+#formholders {
+    border: none;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0), #333 5%, rgba(0, 0, 0, 0.0), #333, rgba(0, 0, 0, 0.0));
+}
+
+table {
+    margin-left: 25vw;
+    color: #39ff14;
+}
+
+table {
+    margin: 6vh 40vw;
+    text-align: center;
+}
+
+td {
+    padding: 2vh 0;
+}
+
+input[type=text],
+select,
+textarea {
+    margin: 8px 0;
+    border-bottom: 1px solid #39ff14;
+    border-radius: 4px;
+    background-color: black;
+    padding: 10px;
+    color: #39ff14;
+    width: 100%;
+}
+
+select,
+legend {
+    color: #39ff14;
+}
+
+legend {
+    text-align: center;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 20px;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.slider {
+    width: 60%;
+    background-color: #45a049;
+    text-align: center;
+    color: black;
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    padding: 1vw;
+
+    border-radius: 5vh;
+}
+
+.slider a:link {
+    text-decoration: none;
+}
+
+.slider a:visited {
+    text-decoration: none;
+}
+
+.slider a:hover {
+    text-decoration: none;
+}
+
+.slider a:active {
+    text-decoration: none;
+}
+
+.inactive {
+    display: inline;
+    /* margin: 3vw; */
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    color: black;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.active {
+    display: inline;
+    /* margin: 3vw; */
+    padding: 1vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    color: black;
+    font-size: 1.5em;
+    background: #e6ffe6;
+    font-weight: 700;
+
+    border-radius: 5vh;
+}
+
+.event_details {
+    color: #39ff14;
+    text-align: center;
+    font-size: 20px;
+}
