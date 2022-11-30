@@ -60,7 +60,7 @@ def login(status = 0):
     if status == 1:
         # Creates a new session
         session['username'] = request.form['username']
-        return redirect(url_for('index'))
+        return redirect(url_for('admin_dash'))
     else:
         return render_template('login_form.html.jinja', status = status)
 
