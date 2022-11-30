@@ -24,6 +24,30 @@ class Participant:
 
         self._db_cursor.executescript(initscript)
 
+    def check_registration(self, pid, event_id):
+        query = 'SELECT * FROM Participants WHERE PID = ? AND EventID = ?'
+        self._db_cursor.execute(query, (pid, event_id, ))
+
+        if self._db_cursor.fetchone() == None:
+            return False
+        else:
+            return True
+
+    def get_ptype(self, pid):
+        query = 'SELECT Ptype FROM Participant_Type WHERE PID = ?'
+        self._db_cursor.execute(query, (pid, ))
+        return self._db_cursor.fetchone()[0]
+
+    def deregister(self, pid, event_id):
+        if self.check_registration(pid, event_id) == True:
+            query = 'DELETE FROM Participants WHERE PID = ? AND EventID = ?'
+            self._db_cursor.execute(query, (pid, event_id, ))
+            self._db_connection.commit()
+            
+            return True
+        else:
+            return False
+
 
 class Student(Participant):
     def __init__(self):
@@ -104,7 +128,17 @@ class Student(Participant):
 
             self._db_connection.commit()
             return True
+
+    def get_by_pid(self, pid):
+        query = '''
+            SELECT S.Roll_no, S.Name, S.Contact_num, S.Email, S.Department, S.Semester 
+            FROM Student as S, ID_Student as I
+            WHERE S.Roll_no = I.Roll_no
+            AND I.PID = ?
+        '''
         
+        self._db_cursor.execute(query, (pid, ))
+        return self._db_cursor.fetchone()
 
 
 class Faculty(Participant):
@@ -182,6 +216,17 @@ class Faculty(Participant):
 
             self._db_connection.commit()
             return True
+
+    def get_by_pid(self, pid):
+        query = '''
+            SELECT F.F_ID, F.Name, F.Contact_num, F.Department 
+            FROM Faculty as F, ID_Faculty as I
+            WHERE F.F_ID = I.F_ID
+            AND I.PID = ?
+        '''
+        
+        self._db_cursor.execute(query, (pid, ))
+        return self._db_cursor.fetchone()
 
 
 class Outsider(Participant):
@@ -261,6 +306,17 @@ class Outsider(Participant):
 
             self._db_connection.commit()
             return True
+
+    def get_by_pid(self, pid):
+        query = '''
+            SELECT O.Govt_ID, O.Name, O.College, O.Contact_num, O.State
+            FROM Outsider as O, ID_Outsider as I
+            WHERE O.Govt_ID = I.Govt_ID
+            AND I.PID = ?
+        '''
+        
+        self._db_cursor.execute(query, (pid, ))
+        return self._db_cursor.fetchone()
 
 
 def main():

@@ -5,7 +5,7 @@ from flask import redirect, url_for
 from datetime import date, time
 import login_operations as login_op
 from event_operations import Events
-from participant_ops import Student, Faculty, Outsider
+from participant_ops import Participant, Student, Faculty, Outsider
 
 app = Flask(__name__)
 
@@ -300,3 +300,59 @@ def register(ptype = 'student', event_id = 1):
             participant_obj.register_student(student_args = args, event_id = event_id)
 
     return render_template('register.html.jinja', ptype = ptype, event_id = event_id, event_name = event_name)
+
+
+@app.route('/deregister_conf/<int:pid>/<int:event_id>')
+def deregister_confirm(pid, event_id):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    participant_obj = Participant()
+    event_obj = Events()
+    person_name = ''
+    person_type = ''
+    event_name = ''
+
+    if not participant_obj.check_registration(pid, event_id):
+        flash(message = 'The registration does not exist')
+        return redirect(url_for('event', event_id = event_id))
+    else:
+        event_name = event_obj.event_details(event_id)[1]
+        ptype = participant_obj.get_ptype(pid)
+        print(ptype)
+        # Student
+        if ptype == 1:
+            person_type = 'Student'
+            student_obj = Student()
+            person_name = student_obj.get_by_pid(pid)[1]
+        # Faculty
+        elif ptype == 2:
+            person_type = 'Faculty'
+            faculty_obj = Faculty()
+            person_name = faculty_obj.get_by_pid(pid)[1]
+        # Outsider
+        else:
+            person_type = 'External Student'
+            outsider_obj = Outsider()
+            person_name = outsider_obj.get_by_pid(pid)[1]
+
+        display_args = {}
+        display_args['person_name'] = person_name
+        display_args['person_type'] = person_type
+        display_args['event_name'] = event_name
+
+    return render_template('deregister.html.jinja', pid = pid, event_id = event_id, display_args = display_args)
+
+
+@app.route('/deregister/<int:pid>/<int:event_id>')
+def deregister(pid, event_id):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    participant_obj = Participant()
+    if participant_obj.deregister(pid, event_id):
+        flash('Person Successfully Deregistered')
+        return redirect(url_for('event', event_id = event_id))
+    else:
+        flash('Registration does not exist')
+        return redirect(url_for('event', event_id = event_id))

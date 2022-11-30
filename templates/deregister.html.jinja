@@ -1,0 +1,5 @@
+<p>
+    Are you sure you want to deregister the {{display_args['person_type']}} named {{display_args['person_name']}} from the event {{display_args['event_name']}}
+</p>
+<a href = "{{url_for('deregister', pid = pid, event_id = event_id)}}"><button>Confirm</button></a>
+<a href = "{{url_for('event', event_id = event_id)}}"><button>Back</button></a>

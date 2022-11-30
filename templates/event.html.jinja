@@ -11,11 +11,24 @@
 
 <body>
     {% extends 'header.html.jinja' %} {% block content %}
+
+    
+
     <div id="headingholders">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 id = "HEADING">> {{ message }}</h3>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <br><br>
         <H1 id="HEADING1">> {{ event_row[1] }}</H1>
         <H3 id="HEADING">> {{ event_row[3][:100] }}</H3>
-        <H3 id="HEADING">> {{ event_row[2] }}</H3>
+        <H3 id="HEADING">> Venue: {{ event_row[2] }}</H3>
+        <H3 id="HEADING">> POC Name: {{ event_row[6] }}</H3>
+        <H3 id="HEADING">> POC Contact: {{ event_row[7] }}</H3>
     </div>
 
     <br>
@@ -28,6 +41,8 @@
                 <th>Roll Number</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th></th>
+                <th></th>
             </tr>
             {% for student in students %}
                 <tr>
@@ -35,6 +50,8 @@
                     <td>{{ student[1] }}</td>
                     <td>{{ student[2] }}</td>
                     <td>{{ student[3] }}</td>
+                    <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = student[0], event_id = event_row[0])}}">Deregister</a></td>
+                    <td>Delete</td>
                 </tr>
             {% endfor %}
         </table>
@@ -47,6 +64,8 @@
                 <th>Faculty ID</th>
                 <th>Name</th>
                 <th>Contact Number</th>
+                <th></th>
+                <th></th>
             </tr>
             {% for faculty in faculties %}
                 <tr>
@@ -54,6 +73,8 @@
                     <td>{{faculty[1]}}</td>
                     <td>{{faculty[2]}}</td>
                     <td>{{faculty[3]}}</td>
+                    <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = faculty[0], event_id = event_row[0])}}">Deregister</a></td>
+                    <td>Delete</td>
                 </tr>
             {% endfor %}
         </table>
@@ -66,6 +87,8 @@
                 <th>Aadhar Number</th>
                 <th>Name</th>
                 <th>College</th>
+                <th></th>
+                <th></th>
             </tr>
             {% for outsider in outsiders %}
                 <tr>
@@ -73,6 +96,8 @@
                     <td>{{outsider[1]}}</td>
                     <td>{{outsider[2]}}</td>
                     <td>{{outsider[3]}}</td>
+                    <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = outsider[0], event_id = event_row[0])}}">Deregister</a></td>
+                    <td>Delete</td>
                 </tr>
             {% endfor %}
         </table>
@@ -80,7 +105,18 @@
     </div>
     <div id="gap">
 
+    <div id="headingholders">
+        <br><br>
+        <H3 id="HEADING">> The deregister option cancels the participation of a person in this event.</H3>
+        <H3 id="HEADING">> The delete option completely deletes the person from the database.</H3>
     </div>
+
+    <br><br>
+
+    <div id="gap">
+
+    </div>
+
     <div id="gap">
 
     </div>

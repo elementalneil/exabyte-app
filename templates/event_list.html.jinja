@@ -31,8 +31,6 @@
                 <th>Venue</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>POC Name</th>
-                <th>POC Contact</th>
             </tr>
             {% for event in all_events %}
             <tr onclick="window.location='{{ url_for('event', event_id = event[0]) }}'">
@@ -42,10 +40,8 @@
                 {% if event[5] == None %}
                     <td> </td>
                 {% else %}
-                    <td>{{event[5]}}</td>
+                    <td>{{event[5][:8]}}</td>
                 {% endif %}
-                <td>{{event[6]}}</td>
-                <td>{{event[7]}}</td>
             </tr>
             {% endfor %}
         </table>
