@@ -13,6 +13,14 @@
     {% extends 'header.html.jinja' %} {% block content %}
     <div id="headingholders">
         <br><br>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 id = "HEADING">> {{ message }}</h3>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <div id="gap">
 
         </div>

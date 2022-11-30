@@ -244,6 +244,8 @@ def register(ptype = 'student', event_id = 1):
                 args['dept'] = None
 
             participant_obj.register_faculty(faculty_args = args, event_id = event_id)
+            flash('Registered Successfully')
+            return redirect(url_for('index'))
 
     elif ptype == 'outsider':
         participant_obj = Outsider()
@@ -268,6 +270,8 @@ def register(ptype = 'student', event_id = 1):
                 args['state'] = None
 
             participant_obj.register_outsider(outsider_args = args, event_id = event_id)
+            flash('Registered Successfully')
+            return redirect(url_for('index'))
 
     else:
         ptype = 'student'
@@ -298,6 +302,8 @@ def register(ptype = 'student', event_id = 1):
                 args['sem'] = None
 
             participant_obj.register_student(student_args = args, event_id = event_id)
+            flash('Registered Successfully')
+            return redirect(url_for('index'))
 
     return render_template('register.html.jinja', ptype = ptype, event_id = event_id, event_name = event_name)
 
@@ -387,7 +393,6 @@ def delete_person_confirm(pid):
     person_args['name'] = person_name
     person_args['type'] = person_type
 
-    print(request.referrer)
     return render_template('delete.html.jinja', person_args = person_args, pid = pid)
 
 
@@ -400,4 +405,28 @@ def delete_person(pid):
     participant_obj.delete_participant(pid)
 
     flash('Person Successfully Deleted')
+    return redirect(url_for('event_list'))
+
+
+@app.route('/event_delete_conf/<int:eventid>')
+def event_delete_confirmation(eventid):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    event = Events()
+    name = event.event_details(eventid)[1]
+
+    return render_template('event_delete_confirmation.html.jinja', event_name = name, eventid = eventid)
+
+
+@app.route('/event_delete/<int:eventid>')
+def event_delete(eventid):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    event = Events()
+    print("Test")
+    event.event_delete(event_id = eventid)
+
+    flash('Event Deleted Successfully')
     return redirect(url_for('event_list'))

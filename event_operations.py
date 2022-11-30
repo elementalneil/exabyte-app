@@ -53,9 +53,6 @@ class Events:
                                          event_id) )
         self.__db_connection.commit()
 
-    def delete_event(self, event_id):
-        self.__db_cursor.execute('DELETE FROM Events WHERE EventID = ?', (event_id))
-
     def view_events(self):
         query = 'SELECT * FROM Events'
         self.__db_cursor.execute(query)
@@ -111,26 +108,16 @@ class Events:
         rows = self.__db_cursor.execute(query, (event_id, ))
         return(rows)
 
+    def event_delete(self, event_id):
+        self.__db_cursor.execute('DELETE FROM Events WHERE EventID = ?', (event_id, ))
+        self.__db_cursor.execute('DELETE FROM Participants WHERE EventID = ?', (event_id, ))
+        self.__db_connection.commit()
 
+
+# For testing this particular file
 def main():
     event_obj = Events()
-
-    # args = {}
-    # args['name'] = 'Proshow1'
-    # args['venue'] = 'Football Ground'
-    # args['date'] = date(2022, 10, 25)
-    # args['time'] = '07:30:00'
-    # args['contact_name'] = 'John Doe'
-    # args['contact_num'] = '+91 815 568 9973'
-
-    # event_obj.create_event(args)
-
-    for row in event_obj.event_students(2):
-        print(row)
-    for row in event_obj.event_faculty(2):
-        print(row)
-    for row in event_obj.event_outsider(2):
-        print(row)
+    event_obj.event_delete(13)
         
 
 if __name__ == '__main__':
