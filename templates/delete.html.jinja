@@ -1,0 +1,13 @@
+<head>
+    <title>Delete</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/deletion.css') }}">
+</head>
+<body>
+    <div class = "container">
+        <h3 id = "HEADING">
+            > Are you sure you want to permanently delete the {{person_args['type']}} named {{person_args['name']}} from the database?
+        </h3>
+        <a href = "{{url_for('delete_person', pid = pid)}}"><button class = "dropbtn">Confirm</button></a>
+        <a href = "{{request.referrer}}"><button class = "dropbtn">Cancel</button></a>
+    </div>
+</body>

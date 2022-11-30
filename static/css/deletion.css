@@ -1,0 +1,44 @@
+body {
+    background-color: #000000;
+    background-color: black;
+    background-image: url("/static/photos/terminal2.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: 100% 0%;
+    padding: 10px;
+    font-family: 'Anonymous Pro', monospace;
+}
+
+.dropbtn {
+    background-color: black;
+    border-radius: 10px;
+    border-bottom: solid #39ff14 3px;
+    color: #39ff14;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Anonymous Pro', monospace;
+    cursor: pointer;
+    width: 50%;
+    animation-duration: 5s;
+    margin: 2vh 0;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #39ff14;
+    color: black;
+}
+
+#HEADING {
+    font-family: 'Anonymous Pro', monospace;
+    color: #39ff14;
+    letter-spacing: 2px;
+    line-height: 2em;
+}
+
+.container {
+    margin: 20vh 2.5vw;
+    width: 45%;
+}

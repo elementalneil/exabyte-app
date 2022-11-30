@@ -319,7 +319,6 @@ def deregister_confirm(pid, event_id):
     else:
         event_name = event_obj.event_details(event_id)[1]
         ptype = participant_obj.get_ptype(pid)
-        print(ptype)
         # Student
         if ptype == 1:
             person_type = 'Student'
@@ -356,3 +355,49 @@ def deregister(pid, event_id):
     else:
         flash('Registration does not exist')
         return redirect(url_for('event', event_id = event_id))
+
+
+@app.route('/delete_confirm/<int:pid>')
+def delete_person_confirm(pid):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    participant_obj = Participant()
+    person_name = ''
+    person_type = ''
+
+    ptype = participant_obj.get_ptype(pid)
+    # Student
+    if ptype == 1:
+        person_type = 'Student'
+        student_obj = Student()
+        person_name = student_obj.get_by_pid(pid)[1]
+    # Faculty
+    elif ptype == 2:
+        person_type = 'Faculty'
+        faculty_obj = Faculty()
+        person_name = faculty_obj.get_by_pid(pid)[1]
+    # Outsider
+    else:
+        person_type = 'External Student'
+        outsider_obj = Outsider()
+        person_name = outsider_obj.get_by_pid(pid)[1]
+
+    person_args = {}
+    person_args['name'] = person_name
+    person_args['type'] = person_type
+
+    print(request.referrer)
+    return render_template('delete.html.jinja', person_args = person_args, pid = pid)
+
+
+@app.route('/delete/<int:pid>')
+def delete_person(pid):
+    if 'username' not in session:
+        return redirect(url_for('index'))
+
+    participant_obj = Participant()
+    participant_obj.delete_participant(pid)
+
+    flash('Person Successfully Deleted')
+    return redirect(url_for('event_list'))

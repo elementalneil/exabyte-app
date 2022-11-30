@@ -36,17 +36,43 @@ class Participant:
     def get_ptype(self, pid):
         query = 'SELECT Ptype FROM Participant_Type WHERE PID = ?'
         self._db_cursor.execute(query, (pid, ))
-        return self._db_cursor.fetchone()[0]
+
+        return_s = self._db_cursor.fetchone();
+
+        if return_s == None:
+            return ''
+        else:
+            return return_s[0]
 
     def deregister(self, pid, event_id):
         if self.check_registration(pid, event_id) == True:
             query = 'DELETE FROM Participants WHERE PID = ? AND EventID = ?'
             self._db_cursor.execute(query, (pid, event_id, ))
             self._db_connection.commit()
-            
             return True
         else:
             return False
+
+    def delete_participant(self, pid):
+        self._db_cursor.execute('DELETE FROM Participants WHERE PID = ?', (pid, ))
+        ptype = self.get_ptype(pid)
+        self._db_cursor.execute('DELETE FROM Participant_Type WHERE PID = ?', (pid, ))
+        if ptype == 1:
+            self._db_cursor.execute('SELECT Roll_no FROM ID_Student WHERE PID = ?', (pid, ))
+            roll = self._db_cursor.fetchone()[0]
+            self._db_cursor.execute('DELETE FROM ID_Student WHERE PID = ?', (pid, ))
+            self._db_cursor.execute('DELETE FROM Student WHERE Roll_no = ?', (roll, ))
+        elif ptype == 2:
+            self._db_cursor.execute('SELECT F_ID FROM ID_Faculty WHERE PID = ?', (pid, ))
+            fid = self._db_cursor.fetchone()[0]
+            self._db_cursor.execute('DELETE FROM ID_Faculty WHERE PID = ?', (pid, ))
+            self._db_cursor.execute('DELETE FROM Faculty WHERE F_ID = ?', (fid, ))
+        else:
+            self._db_cursor.execute('SELECT Govt_ID FROM ID_Outsider WHERE PID = ?', (pid, ))
+            id = self._db_cursor.fetchone()[0]
+            self._db_cursor.execute('DELETE FROM ID_Outsider WHERE PID = ?', (pid, ))
+            self._db_cursor.execute('DELETE FROM Outsider WHERE Govt_ID = ?', (id, ))
+        self._db_connection.commit()
 
 
 class Student(Participant):
@@ -319,21 +345,10 @@ class Outsider(Participant):
         return self._db_cursor.fetchone()
 
 
+# For testing this particular file
 def main():
-    std = Outsider()
-
-    args = {}
-    args['govt_id'] = '8978 5645 6654'
-    args['name'] = 'Sourayan Das'
-    args['college'] = 'Jadavpur University'
-    args['contact_num'] = '+91 8695 654 235'
-    args['state'] = 'West Bengal'
-
-    flag = std.register_outsider(args, 1)
-    if flag:
-        print('Registered Successfully')
-    else:
-        print('You are already registered')
+    p = Participant()
+    p.delete_participant(9)
 
 if __name__ == '__main__':
     main()

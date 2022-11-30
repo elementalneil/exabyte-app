@@ -51,7 +51,7 @@
                     <td>{{ student[2] }}</td>
                     <td>{{ student[3] }}</td>
                     <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = student[0], event_id = event_row[0])}}">Deregister</a></td>
-                    <td>Delete</td>
+                    <td><a class = "deletion" href = "{{url_for('delete_person_confirm', pid = student[0])}}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -74,7 +74,7 @@
                     <td>{{faculty[2]}}</td>
                     <td>{{faculty[3]}}</td>
                     <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = faculty[0], event_id = event_row[0])}}">Deregister</a></td>
-                    <td>Delete</td>
+                    <td><a class = "deletion" href = "{{url_for('delete_person_confirm', pid = faculty[0])}}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -97,7 +97,7 @@
                     <td>{{outsider[2]}}</td>
                     <td>{{outsider[3]}}</td>
                     <td><a class = "deletion" href = "{{url_for('deregister_confirm', pid = outsider[0], event_id = event_row[0])}}">Deregister</a></td>
-                    <td>Delete</td>
+                    <td><a class = "deletion" href = "{{url_for('delete_person_confirm', pid = outsider[0])}}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
