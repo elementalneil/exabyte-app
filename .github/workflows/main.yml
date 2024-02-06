@@ -21,4 +21,4 @@ jobs:
       run: pip install lizard
  
     - name: Run Lizard
-      run: lizard . --CCN 10
+      run: lizard . --CCN 20
